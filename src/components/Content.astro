@@ -29,15 +29,28 @@ const githubUser = await getGithubUser(username) as GitHubUser;
         <h2 class="text-2xl font-bold mt-8 mb-4 pl-3">Mis proyectos ↓</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-3">
             <ProjectCard 
-                title="kikodev-portfolio"
+                title="Personal Portfolio"
                 technologies={["Astro"]}
                 repoUrl="https://github.com/KikoMola/kikodev-portfolio"
                 deployUrl="https://kikodev-portfolio.vercel.app/"
             />
 
             <ProjectCard 
-                title="kikodev-portfolio"
-                technologies={["Astro"]}
+                title="LeeTuTicket"
+                technologies={["Angular", "TailwindCSS", "Supabase"]}
+                repoUrl="https://github.com/KikoMola/kikodev-portfolio"
+                deployUrl="https://kikodev-portfolio.vercel.app/"
+            />
+
+            <ProjectCard 
+                title="KanbanHub"
+                technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
+                repoUrl="https://github.com/KikoMola/kikodev-portfolio"
+            />
+
+            <ProjectCard 
+                title="Coingecko Clone"
+                technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
                 repoUrl="https://github.com/KikoMola/kikodev-portfolio"
             />
         </div>
