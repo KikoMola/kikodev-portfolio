@@ -13,14 +13,14 @@ const githubUser = await getGithubUser(username) as GitHubUser;
         <div class="flex flex-col md:flex-row gap-6 md:h-[200px] pl-3 pr-3">
             <div class="w-full md:w-[40%] h-[200px] md:h-full">
                 <h2 class="text-2xl font-bold mb-3">Sobre mí ↓</h2>
-                <div class="h-[calc(100%-2rem)]">
+                <div class="h-[calc(100%-1rem)]">
                     <Bio bio={githubUser.bio} />
                 </div>
             </div>
 
             <div class="w-full md:w-[60%] h-[200px] md:h-full">
                 <h2 class="text-2xl font-bold mb-3">Actividad en el último año ↓</h2>
-                <div class="h-[calc(100%-2rem)]">
+                <div class="h-[calc(100%-1rem)]">
                     <Activity />
                 </div>
             </div>
@@ -38,20 +38,26 @@ const githubUser = await getGithubUser(username) as GitHubUser;
             <ProjectCard 
                 title="LeeTuTicket"
                 technologies={["Angular", "TailwindCSS", "Supabase"]}
-                repoUrl="https://github.com/KikoMola/kikodev-portfolio"
                 deployUrl="https://kikodev-portfolio.vercel.app/"
             />
 
             <ProjectCard 
                 title="KanbanHub"
                 technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
-                repoUrl="https://github.com/KikoMola/kikodev-portfolio"
+                deployUrl='https://todo-kanban-hub.vercel.app/'
+            />
+
+            <ProjectCard 
+                title="MyBulkyPal"
+                technologies={["Angular", "TailwindCSS", "Supabase"]}
+                deployUrl="https://tail-bulk.vercel.app/"
             />
 
             <ProjectCard 
                 title="Coingecko Clone"
                 technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
-                repoUrl="https://github.com/KikoMola/kikodev-portfolio"
+                repoUrl="https://github.com/KikoMola/CryptoCoinGeckoAPI",
+                deployUrl="https://crypto-coingecko-api.vercel.app/"
             />
         </div>
     </div>
