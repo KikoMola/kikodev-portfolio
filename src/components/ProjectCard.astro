@@ -3,10 +3,11 @@ interface Props {
     title: string;
     technologies: string[];
     repoUrl?: string;
+    description?: string;
     deployUrl?: string;
 }
 
-const { title, technologies, repoUrl, deployUrl } = Astro.props;
+const { title, technologies, repoUrl, deployUrl, description } = Astro.props;
 ---
 
 <div class="rounded-xl p-6 border-[1px] border-b-[6px] border-black h-full project-card">
@@ -16,9 +17,11 @@ const { title, technologies, repoUrl, deployUrl } = Astro.props;
     
     <div class="flex flex-wrap gap-2 mb-4">
         {technologies.map(tech => (
-            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">{tech}</span>
+            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm border-[1px] border-b-[3px] border-black">{tech}</span>
         ))}
     </div>
+
+    <p class="text-sm text-gray-500">{description}</p>
 
     <div class="flex">
         {repoUrl && (

@@ -8,7 +8,7 @@ const username = 'KikoMola';
 const githubUser = await getGithubUser(username) as GitHubUser;
 ---
 
-<main class="w-full md:w-[80%] min-h-screen bg-white">
+<main class="w-full md:w-[80%] md:h-screen md:overflow-y-auto">
     <div class="p-6">
         <div class="flex flex-col md:flex-row gap-6 md:h-[200px] pl-3 pr-3">
             <div class="w-full md:w-[40%] h-[200px] md:h-full">
@@ -33,24 +33,28 @@ const githubUser = await getGithubUser(username) as GitHubUser;
                 technologies={["Astro"]}
                 repoUrl="https://github.com/KikoMola/kikodev-portfolio"
                 deployUrl="https://kikodev-portfolio.vercel.app/"
+                description="Mi portfolio personal, desarrollado con Astro, TailwindCSS y TypeScript."
             />
 
             <ProjectCard 
                 title="LeeTuTicket"
                 technologies={["Angular", "TailwindCSS", "Supabase"]}
                 deployUrl="https://kikodev-portfolio.vercel.app/"
+                description="LeeTuTicket es una aplicación web que permite a los usuarios comprar y vender tickets para eventos en línea."
             />
 
             <ProjectCard 
                 title="KanbanHub"
                 technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
                 deployUrl='https://todo-kanban-hub.vercel.app/'
+                description="KanbanHub es una aplicación web que permite a los usuarios gestionar sus tareas y proyectos en un tablero Kanban."
             />
 
             <ProjectCard 
                 title="MyBulkyPal"
                 technologies={["Angular", "TailwindCSS", "Supabase"]}
                 deployUrl="https://tail-bulk.vercel.app/"
+                description="MyBulkyPal es una aplicación web que permite a los usuarios añadir su rutina de ejercicio o llevar un registro de su dieta."
             />
 
             <ProjectCard 
@@ -58,6 +62,7 @@ const githubUser = await getGithubUser(username) as GitHubUser;
                 technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
                 repoUrl="https://github.com/KikoMola/CryptoCoinGeckoAPI",
                 deployUrl="https://crypto-coingecko-api.vercel.app/"
+                description="Coingecko Clone es una aplicación web que permite a los usuarios ver el precio de las criptomonedas en tiempo real."
             />
         </div>
     </div>
