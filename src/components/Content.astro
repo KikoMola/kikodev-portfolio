@@ -18,12 +18,12 @@ const githubUser = await getGithubUser(username) as GitHubUser;
                 </div>
             </div>
 
-            <div class="w-full md:w-[60%] h-[200px] md:h-full">
+            <!-- <div class="w-full md:w-[60%] h-[200px] md:h-full">
                 <h2 class="text-2xl font-bold mb-3">Actividad en el último año ↓</h2>
                 <div class="h-[calc(100%-1rem)]">
                     <Activity />
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <h2 class="text-2xl font-bold mt-8 mb-4 pl-3">Mis proyectos ↓</h2>
@@ -46,7 +46,7 @@ const githubUser = await getGithubUser(username) as GitHubUser;
             <ProjectCard 
                 title="KanbanHub"
                 technologies={["Angular", "TailwindCSS", "NestJS", "PostgreSQL", "NeonDB"]}
-                deployUrl='https://todo-kanban-hub.vercel.app/'
+                deployUrl='https://kanbanhub.work/'
                 description="KanbanHub es una aplicación web que permite a los usuarios gestionar sus tareas y proyectos en un tablero Kanban."
             />
 
