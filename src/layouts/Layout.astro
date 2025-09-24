@@ -6,9 +6,31 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Kiko Dev</title>
+		<script>
+			// Check for saved theme preference or default to 'light'
+			const theme = localStorage.getItem('theme') || 'light';
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			}
+		</script>
 	</head>
 	<body>
 		<slot />
+		<script>
+			function toggleTheme() {
+				const html = document.documentElement;
+				if (html.classList.contains('dark')) {
+					html.classList.remove('dark');
+					localStorage.setItem('theme', 'light');
+				} else {
+					html.classList.add('dark');
+					localStorage.setItem('theme', 'dark');
+				}
+			}
+			
+			// Make toggleTheme globally available
+			(window as any).toggleTheme = toggleTheme;
+		</script>
 	</body>
 </html>
 

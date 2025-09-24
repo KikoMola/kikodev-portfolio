@@ -8,11 +8,11 @@ const username = 'KikoMola';
 const githubUser = await getGithubUser(username) as GitHubUser;
 ---
 
-<main class="w-full md:w-[80%] min-h-screen md:h-screen md:overflow-y-auto">
+<main class="w-full md:w-[80%] min-h-screen md:h-screen md:overflow-y-auto bg-white dark:bg-gray-900">
     <div class="p-6">
         <div class="flex flex-col md:flex-row gap-6 md:h-[200px] pl-3 pr-3">
             <div class="w-full md:w-[40%] h-[200px] md:h-full">
-                <h2 class="text-2xl font-bold mb-3">Sobre mí ↓</h2>
+                <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Sobre mí ↓</h2>
                 <div class="h-[calc(100%-1rem)]">
                     <Bio bio={githubUser.bio} />
                 </div>
@@ -26,7 +26,7 @@ const githubUser = await getGithubUser(username) as GitHubUser;
             </div> -->
         </div>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4 pl-3">Mis proyectos ↓</h2>
+        <h2 class="text-2xl font-bold mt-8 mb-4 pl-3 text-gray-900 dark:text-white">Mis proyectos ↓</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-3">
             <ProjectCard 
                 title="Personal Portfolio"
