@@ -51,11 +51,19 @@ const githubUser = await getGithubUser(username) as GitHubUser;
             />
 
             <ProjectCard 
+                title="Angular Dependency Checker"
+                technologies={["React", "TailwindCSS", "ShadCN", "Vite"]}
+                repoUrl="https://github.com/KikoMola/Angular-Dependency-Checker"
+                deployUrl="https://angular-dependency-checker.vercel.app/"
+                description="Angular Dependency Checker es una herramienta que permite a los desarrolladores analizar y gestionar las dependencias de sus proyectos Angular."
+            />
+
+            <!-- <ProjectCard 
                 title="MyBulkyPal"
                 technologies={["Angular", "TailwindCSS", "Supabase"]}
                 deployUrl="https://tail-bulk.vercel.app/"
                 description="MyBulkyPal es una aplicación web que permite a los usuarios añadir su rutina de ejercicio o llevar un registro de su dieta."
-            />
+            /> -->
 
             <ProjectCard 
                 title="Coingecko Clone"
@@ -63,13 +71,6 @@ const githubUser = await getGithubUser(username) as GitHubUser;
                 repoUrl="https://github.com/KikoMola/CryptoCoinGeckoAPI",
                 deployUrl="https://crypto-coingecko-api.vercel.app/"
                 description="Coingecko Clone es una aplicación web que permite a los usuarios ver el precio de las criptomonedas en tiempo real."
-            />
-
-            <ProjectCard 
-                title="SASS Scaffolding"
-                technologies={["Angular", "TailwindCSS", "PrimeNG"]}
-                repoUrl="https://github.com/KikoMola/saas-scaffolding"
-                description="SASS Scaffolding es un proyecto de código abierto que permite a los usuarios crear aplicaciones para gestionar cualquier tipo de negocio, totalmente personalizable y modular."
             />
         </div>
     </div>
