@@ -58,6 +58,14 @@ const githubUser = await getGithubUser(username) as GitHubUser;
             />
 
             <ProjectCard 
+                title="BrickLink Cart Planner"
+                technologies={["Angular", "TailwindCSS"]}
+                repoUrl="https://github.com/KikoMola/bl-cart-planner",
+                deployUrl="https://bl-cart-planner.vercel.app/"
+                description="Este planificador de carritos de BrickLink ayuda a los usuarios a organizar y gestionar sus compras de piezas de LEGO y permite optimizar los precios al máximo."
+            />
+
+            <ProjectCard 
                 title="Angular Dependency Checker"
                 technologies={["React", "TailwindCSS", "ShadCN", "Vite"]}
                 repoUrl="https://github.com/KikoMola/Angular-Dependency-Checker"
@@ -72,6 +80,9 @@ const githubUser = await getGithubUser(username) as GitHubUser;
                 deployUrl="https://crypto-coingecko-api.vercel.app/"
                 description="Coingecko Clone es una aplicación web que permite a los usuarios ver el precio de las criptomonedas en tiempo real."
             />
+
+            
+
         </div>
     </div>
 </main> 
