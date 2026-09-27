@@ -1,0 +1,22 @@
+---
+import { stack } from '../data/profile';
+---
+
+<section id="sobre-mi" class="mt-28 grid scroll-mt-6 grid-cols-1 gap-y-10 border-t-2 border-ink pt-4 lg:mt-40 lg:grid-cols-12 lg:gap-x-5 lg:gap-y-[72px]">
+    <span class="font-mono text-xs uppercase tracking-[0.04em] lg:col-span-3">02 / Sobre mí</span>
+    <p class="text-pretty text-[28px] font-medium leading-[1.15] tracking-[-0.03em] lg:col-span-9 lg:text-5xl lg:leading-[1.1] lg:tracking-[-0.035em]" data-reveal>
+        Soy Kiko, desarrollador frontend en Valencia. Llevo 4 años construyendo aplicaciones con Angular y TailwindCSS y, últimamente, también sus APIs con NestJS.
+    </p>
+    <div class="grid grid-cols-3 gap-x-3 sm:gap-x-5 lg:col-span-9 lg:col-start-4">
+        {stack.map((group, i) => (
+            <div class="flex flex-col gap-3.5" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+                <span class="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-muted">{group.label}</span>
+                <ul class="flex flex-col border-b border-ink">
+                    {group.items.map((item) => (
+                        <li class="border-t border-ink py-3 text-[15px] font-medium sm:text-lg lg:text-xl">{item}</li>
+                    ))}
+                </ul>
+            </div>
+        ))}
+    </div>
+</section>

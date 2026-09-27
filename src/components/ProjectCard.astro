@@ -1,53 +1,77 @@
 ---
+import type { CoverTone, Project } from '../data/projects';
+import ArrowUpRight from './ArrowUpRight.astro';
+
 interface Props {
-    title: string;
-    technologies: string[];
-    repoUrl?: string;
-    description?: string;
-    deployUrl?: string;
+    project: Project;
+    index: number;
+    /** Retraso de la animación de entrada, para escalonar las tarjetas de una misma fila. */
+    delay: number;
 }
 
-const { title, technologies, repoUrl, deployUrl, description } = Astro.props;
+const { project, index, delay } = Astro.props;
+const { title, description, stack, url, urlLabel, repoUrl, tone, featured } = project;
+
+const toneClasses: Record<CoverTone, string> = {
+    accent: 'bg-accent text-white',
+    ink: 'bg-ink text-paper',
+    paper: 'bg-paper-deep text-ink',
+};
+
+const number = String(index + 1).padStart(2, '0');
 ---
 
-<div class="rounded-xl p-6 border-[1px] border-b-[6px] border-black h-full project-card bg-white">
-    <div class="flex items-center gap-2 mb-4">
-        <h3 class="text-xl font-bold">{title}</h3>
-    </div>
-    
-    <div class="flex flex-wrap gap-2 mb-4">
-        {technologies.map(tech => (
-            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm border-[1px] border-b-[3px] border-black">{tech}</span>
-        ))}
-    </div>
+<article
+    class:list={['group flex flex-col gap-5', featured ? 'lg:col-span-6' : 'lg:col-span-4']}
+    data-reveal
+    style={`--reveal-delay: ${delay}ms`}
+>
+    <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visitar ${title}`}
+        class:list={[
+            'flex flex-col justify-between overflow-hidden p-5 transition-transform duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:-translate-y-1.5',
+            featured ? 'h-[300px] lg:h-[420px] lg:p-6' : 'h-[240px] lg:h-[300px]',
+            toneClasses[tone],
+        ]}
+    >
+        <div class="flex justify-between gap-3 font-mono text-xs tracking-[0.02em]">
+            <span>{number}</span>
+            <span class="flex min-w-0 items-center gap-1">
+                <span class="truncate">{urlLabel}</span>
+                <ArrowUpRight class="size-3 shrink-0" />
+            </span>
+        </div>
+        <span
+            class:list={[
+                'text-balance font-bold',
+                featured
+                    ? 'text-[length:clamp(56px,7.5vw,112px)] leading-[0.85] tracking-[-0.06em]'
+                    : 'text-[44px] leading-[0.9] tracking-[-0.05em] lg:text-[length:clamp(40px,3.9vw,56px)]',
+            ]}
+        >
+            {title}
+        </span>
+    </a>
 
-    <p class="text-sm text-gray-500">{description}</p>
-
-    <div class="flex">
-        {repoUrl && (
-            <div class="flex mt-5 mr-5">
-                <a href={repoUrl} target="_blank">
-                    <button class="pr-4 py-2 rounded-lg border-2 border-black bg-[#B9FF66] hover:bg-[#191A23] hover:text-white transition-colors flex items-center">
-                        <svg class="w-6 h-6 mx-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                        </svg>
-                        Code
-                    </button>
+    <div class:list={['flex flex-col gap-2.5', featured && 'lg:grid lg:grid-cols-6 lg:gap-x-5']}>
+        <p class:list={['text-base leading-normal', featured && 'lg:col-span-4 lg:text-lg lg:leading-[1.45]']}>
+            {description}
+        </p>
+        <div class="flex flex-col items-start gap-2.5 lg:col-span-2">
+            <span class="font-mono text-xs leading-[1.7] text-ink-muted">{stack.join(' / ')}</span>
+            {repoUrl && (
+                <a
+                    href={repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-[15px] font-medium underline decoration-1 underline-offset-[5px] hover:decoration-2"
+                >
+                    Código en GitHub<ArrowUpRight class="size-3.5" />
                 </a>
-            </div>
-        )}
-    
-        {deployUrl && (
-            <div class="flex mt-5">
-                <a href={deployUrl} target="_blank">
-                    <button class="pr-4 py-2 rounded-lg border-2 border-black bg-white hover:bg-[#191A23] hover:text-white transition-colors flex items-center">
-                        <svg class="w-6 h-6 mx-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                        </svg>
-                        Deploy
-                    </button>
-                </a>
-            </div>
-        )}
-    </div>   
-</div> 
+            )}
+        </div>
+    </div>
+</article>

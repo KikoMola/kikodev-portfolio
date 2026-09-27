@@ -1,23 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Presentation from '../components/Presentation.astro';
-import Content from '../components/Content.astro';
-import { getGithubUser } from '../utils/github';
-import type { GitHubUser } from '../utils/github';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-
-const username = 'KikoMola';
-const githubUser = await getGithubUser(username);
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import About from '../components/About.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Mi Portfolio">
-	<div class="flex flex-col md:flex-row md:h-screen">
-		<Presentation 
-			avatarUrl={githubUser.avatar_url}
-			login={githubUser.login}
-		/>
-		<Content />
+<Layout>
+	<div id="top" class="mx-auto max-w-[1600px] px-5 lg:px-10">
+		<Header />
+		<main>
+			<Hero />
+			<Projects />
+			<About />
+		</main>
 	</div>
+	<Footer />
 </Layout>
