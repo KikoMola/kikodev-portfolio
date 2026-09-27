@@ -1,0 +1,18 @@
+---
+const navLinks = [
+    { href: '#proyectos', label: 'Proyectos' },
+    { href: '#sobre-mi', label: 'Sobre mí' },
+    { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header class="flex min-h-14 flex-wrap items-center justify-between gap-x-4 border-b border-ink lg:grid lg:h-14 lg:grid-cols-12 lg:gap-x-5">
+    <a href="#top" class="whitespace-nowrap text-base font-bold tracking-[-0.02em] min-[400px]:text-[17px] lg:col-span-3">Kiko Guirado</a>
+    <span class="hidden font-mono text-xs uppercase tracking-[0.04em] lg:col-span-3 lg:block">Desarrollador frontend</span>
+    <span class="hidden font-mono text-xs uppercase tracking-[0.04em] lg:col-span-3 lg:block">Valencia, ES</span>
+    <nav aria-label="Principal" class="flex justify-end gap-3 text-[13px] font-medium min-[400px]:gap-4 min-[400px]:text-sm sm:gap-7 sm:text-[15px] lg:col-span-3">
+        {navLinks.map((link) => (
+            <a href={link.href} class="whitespace-nowrap py-4 underline-offset-[5px] hover:underline">{link.label}</a>
+        ))}
+    </nav>
+</header>
