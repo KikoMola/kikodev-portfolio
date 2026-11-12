@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { CoverTone, Project } from '../data/projects';
 import ArrowUpRight from './ArrowUpRight.astro';
 
@@ -10,7 +11,12 @@ interface Props {
 }
 
 const { project, index, delay } = Astro.props;
-const { title, description, stack, url, urlLabel, repoUrl, tone, featured } = project;
+const { title, description, stack, url, urlLabel, repoUrl, image, inProgress, tone, featured } = project;
+
+// Ancho real de la portada en cada rejilla (el contenido se limita a 1600px).
+const imageSizes = featured
+    ? '(min-width: 1024px) min(50vw, 780px), 100vw'
+    : '(min-width: 1024px) min(33vw, 520px), (min-width: 768px) 50vw, 100vw';
 
 const toneClasses: Record<CoverTone, string> = {
     accent: 'bg-accent text-white',
@@ -32,7 +38,7 @@ const number = String(index + 1).padStart(2, '0');
         rel="noopener noreferrer"
         aria-label={`Visitar ${title}`}
         class:list={[
-            'flex flex-col justify-between overflow-hidden p-5 transition-transform duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:-translate-y-1.5',
+            'relative flex flex-col justify-between overflow-hidden p-5 transition-transform duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:-translate-y-1.5',
             featured ? 'h-[300px] lg:h-[420px] lg:p-6' : 'h-[240px] lg:h-[300px]',
             toneClasses[tone],
         ]}
@@ -54,6 +60,16 @@ const number = String(index + 1).padStart(2, '0');
         >
             {title}
         </span>
+        {image && (
+            <Image
+                src={image}
+                alt=""
+                widths={[520, 800, 1200, 1600]}
+                sizes={imageSizes}
+                loading="lazy"
+                class="pointer-events-none absolute inset-0 size-full object-cover object-top opacity-0 transition-opacity duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:opacity-100 [a:focus-visible>&]:opacity-100"
+            />
+        )}
     </a>
 
     <div class:list={['flex flex-col gap-2.5', featured && 'lg:grid lg:grid-cols-6 lg:gap-x-5']}>
@@ -61,6 +77,12 @@ const number = String(index + 1).padStart(2, '0');
             {description}
         </p>
         <div class="flex flex-col items-start gap-2.5 lg:col-span-2">
+            {inProgress && (
+                <span class="inline-flex items-center gap-1.5 border border-ink px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.06em]">
+                    <span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+                    En progreso
+                </span>
+            )}
             <span class="font-mono text-xs leading-[1.7] text-ink-muted">{stack.join(' / ')}</span>
             {repoUrl && (
                 <a
